@@ -1,0 +1,45 @@
+<div id="top-header">
+	<div id="headerLine1">
+		<div class="logo">
+			<span><img src="../../static/img/logo.png" title="НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ И КОНСТРУКТОРСКИЙ ИНСТИТУТ РАДИОЭЛЕКТРОННОЙ ТЕХНИКИ"></span>
+		</div>
+	</div>
+	<div id="headerLine2">
+		<div class="head1" id="namecam">
+			<span> Видеопоток </span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	let nameCAM = document.getElementById('namecam'),
+	requestURL = '../../static/conf/conf.json'
+	request = new XMLHttpRequest();
+	request.open('GET', requestURL);
+
+	request.onload = function(e) {
+		if (request.readyState === 4) {
+			if (request.status === 200) {
+				console.log(request.response);
+				let dataTable = JSON.parse(request.responseText);
+				getTableInfo(dataTable);
+			} else {
+				console.error(request.statusText);
+			}
+		}
+	};
+
+	request.onerror = function(e) {
+	console.error(request.statusText);
+	};
+
+	request.send();
+
+	function getTableInfo(data) {
+		nameCAM.innerHTML = `${data.streams.Empiria.name}`;
+
+}
+
+
+</script>

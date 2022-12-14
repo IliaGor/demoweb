@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<title>Web-интерфейс</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../../static/css/style.css" media="all" />
+	<link rel="icon" href="favicon.ico">
+	<script src="../../static/js/jquery-1.11.0.min.js"></script>
+	<script src="../../static/js/mask.ip-input.js"></script>
+	<script src="../../static/js/min/intelect.min.js"></script>
+
+	<!--[if IE]><style>span.data-on-label{color: #24afe6; text-shadow: -0.8px 0.5px 2px rgba(255, 255, 255, 0.8);} span.data-off-label{text-shadow: -1.2px -1px 1px rgba(64,64,64,0.6);} .switch_box input:checked + .checkbox__text span.data-off-label{color: #24afe6;}</style><![endif]-->
+</head>
+<body>
+
+{{ template "header.html" .}}
+{{ template "footer.html" .}}
+{{ template "left.html" .}}
+{{ template "video.html" .}}
+{{ template "right.html" .}}
+
+
+
+
+<div class="wrapper">
+	<div class="content">
+		<div data-include="header"></div>
+		<div class="spot"></div>
+		<div data-include="left"></div>
+		<div data-include="video"></div>
+		<div data-include="right"></div>
+	</div>
+
+	<div data-include="footer"></div>
+
+</div>
+
+
+
+<script>
+	function asd(){
+		window.open("index.html","name","toolbar=no,width=1280,height=800,menubar=no,status=no,location=no,scrollbars=no, resizable=0");
+	}
+</script>
+
+</body>
+</html>
+
+

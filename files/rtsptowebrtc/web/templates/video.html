@@ -1,0 +1,15 @@
+
+
+
+<input type="hidden" name="suuid" id="suuid" value="{{ .suuid }}">
+<input type="hidden" name="port" id="port" value="{{ .port }}">
+<input type="hidden" id="localSessionDescription" readonly="true">
+<input type="hidden" id="remoteSessionDescription">
+<div id="video" class="video-window">
+    <div  class="frame" id="remoteVideos" >
+        <video style="width:100%" id="videoElem" autoplay muted controls="controls" poster="../../static/images/optimize.jpeg">
+        </video>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../static/js/app.js?ver={{ .version }}"></script>

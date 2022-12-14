@@ -1,0 +1,61 @@
+<body>
+       <input class="open-box" id="left-box" type="checkbox" hidden>
+       <label class="btn-left" for="left-box"></label>
+	<div id="left-column">
+		<div id="leftLine1">
+			<div class="title-side title-up">
+				<span>Кодировка</span>
+			</div>
+			<label class="switch_box">
+				<input type="checkbox" id="test"/>
+				<div class="checkbox__text"><span class="data-on-label">H.264</span><span class="data-off-label">MPEG</span></div>
+			</label>
+			
+		</div>
+		<div id="leftLine2">
+			<div class="title-side title-middle">
+				<span>IP-адрес</span>
+			</div>
+
+
+			<div class="form-group">
+
+
+
+	<form method="POST">
+
+				<input
+					 type="text"
+					 name="NewIP"
+					 class="form-control"
+					 id="ipAddress"
+					 ip-mask
+					 placeholder="000.000.000.000"
+				 />
+		<button class="button"  type="submit" value="" id="ip">
+
+
+	</form></div>
+
+		</div>
+		<div id="leftLine3">
+			<label class="switch_box">
+				<input type="checkbox" id="test"/>
+				<div class="checkbox__text"><span class="data-on-label">HD</span><span class="data-off-label">FullHD</span></div>
+			</label>
+			<div class="title-side title-down">
+				<span>Разрешение</span>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<script>
+	$(document).ready(function(){
+  	$('[ip-mask]').ipAddress();
+	});
+</script>
+
+</body>

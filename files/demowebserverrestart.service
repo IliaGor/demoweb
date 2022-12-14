@@ -1,0 +1,11 @@
+[Unit]
+Description=restart demoserver Golang GIN
+
+[Service]
+Type=simple
+ExecStart=systemctl restart demowebserver
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

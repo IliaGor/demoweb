@@ -1,0 +1,34 @@
+﻿
+
+<script>
+    var PotokInfo = document.getElementById('potok'),
+        requestURL = 'config.json', //файл находится в той же папке, что и html-файл, который к нему обращается
+        request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+
+    request.onload = function(e) {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                console.log(request.response);
+                var data = JSON.parse(request.responseText);
+                getPotokInfo(data);
+            } else {
+                console.error(request.statusText);
+            }
+        }
+    };
+
+    request.onerror = function(e) {
+        console.error(request.statusText);
+    };
+    request.send();
+
+    function getPotokInfo(data) {
+        PotokInfo.innerHTML = `${data.ip}`;
+    };
+
+</script>
+
+<div id="footer">
+    <div class="footerRow" id="potok"></div>
+</div>

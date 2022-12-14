@@ -1,0 +1,38 @@
+﻿<div id="footer">
+	<div class="footerRow" id="potok"></div>
+	<span> IP</span>
+</div>
+
+<script type="text/javascript">
+
+	let potokIP = document.getElementById('potok'),
+	requestURL = '../../static/conf/conf.json'
+	request = new XMLHttpRequest();
+	request.open('GET', requestURL);
+
+	request.onload = function(e) {
+		if (request.readyState === 4) {
+			if (request.status === 200) {
+				console.log(request.response);
+				let dataTable = JSON.parse(request.responseText);
+				getTableInfo(dataTable);
+			} else {
+				console.error(request.statusText);
+			}
+		}
+	};
+
+	request.onerror = function(e) {
+	console.error(request.statusText);
+	};
+
+	request.send();
+
+	function getTableInfo(data) {
+		potokIP.innerHTML = `${data.streams.Empiria.ip}`;
+
+}
+
+
+</script>
+

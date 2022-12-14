@@ -1,0 +1,65 @@
+<body>
+       <input class="open-box" id="left-box" type="checkbox" hidden>
+       <label class="btn-left" for="left-box"></label>
+	<div id="left-column">
+		<div id="leftLine1">
+			<div class="title-side title-up">
+				<span>Кодировка</span>
+			</div>
+			<label class="switch_box">
+				<input type="checkbox" id="test"/>
+				<div class="checkbox__text"><span class="data-on-label">H.264</span><span class="data-off-label">MPEG</span></div>
+			</label>
+			
+		</div>
+		<div id="leftLine2">
+			<div class="title-side title-middle">
+				<span>IP-адрес</span>
+			</div>
+			<form id="form-ip" class="form-group">
+
+				<input
+ type="text"
+ class="form-control"
+ id="ipAddress"
+ ip-mask
+ placeholder="000.000.000.000"
+ />
+			</form>
+			<div class="button" form="form-ip" type="submit" id="ip" onclick="Complete()"></div>
+		</div>
+		<div id="leftLine3">
+			<label class="switch_box">
+				<input type="checkbox" id="test"/>
+				<div class="checkbox__text"><span class="data-on-label">HD</span><span class="data-off-label">FullHD</span></div>
+			</label>
+			<div class="title-side title-down">
+				<span>Разрешение</span>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<script>
+	$(document).ready(function(){
+  	$('[ip-mask]').ipAddress();
+	});
+</script>
+
+
+<script>
+        function Complete()
+        {
+	$('form').on('submit', function(e){
+    	e.preventDefault();
+	});
+            var Elem="IP: " + document.getElementById('ipAddress').value +
+                "\nВсё работает!";
+            alert(Elem);
+        }
+</script>
+
+
+</body>

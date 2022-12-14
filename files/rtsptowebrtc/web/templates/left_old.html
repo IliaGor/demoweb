@@ -1,0 +1,91 @@
+﻿<body>
+       <input class="open-box" id="left-box" type="checkbox" hidden>
+       <label class="btn-left" for="left-box"></label>
+	<div id="left-column">
+		<div id="leftLine1">
+			<div class="title-side title-up">
+				<span>Кодировка</span>
+			</div>
+			<label class="switch_box">
+				<input type="checkbox" id="test"/>
+				<div class="checkbox__text"><span class="data-on-label">H.264</span><span class="data-off-label">MPEG</span></div>
+			</label>
+			
+		</div>
+		<div id="leftLine2">
+			<div class="title-side title-middle">
+				<span>IP-адрес</span>
+			</div>
+
+				<form method="POST">
+
+					<input
+							type="text"
+							name="NewIP"
+							class="form-control"
+							id="ipAddress"
+							ip-mask
+							placeholder="000.000.000.000"
+					/>
+					<button class="button"  type="submit" value="" id="ip">
+				</form>
+
+		</div>
+
+		<div id="leftLine3">
+			<div class="button_box">
+				<div class="button">
+					<a href="#" title="Сделать скрин" onclick="Make_screenshot()"><span
+ id="btn-screen"></span></a>
+				</div>
+				<div class="button">
+					<a href="../../static/images/col.jpg" title="Загрузить скрин" download><span
+ id="btn-screenplus"></span></a>
+				</div>
+
+			</div>
+			<div class="title-side title-down">
+				<span>Скриншот</span>
+			</div>
+		</div>
+	</div>
+
+
+   <script>
+	   function Make_screenshot(){
+		   //alert("Сделать снимок экрана")
+		   let myRequestNautilus = new XMLHttpRequest();
+		   myRequestNautilus.open('GET', ':uuid/MakeScreenshotURL', true); //асинхронный запрос
+		   myRequestNautilus.onreadystatechange = function() {
+	   if (myRequestNautilus.readyState != 4) return;
+	   if (myRequestNautilus.status != 200) {
+	   // обработать ошибку
+		   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+	   return;
+			   }
+		   }
+	   myRequestNautilus.send();
+
+	   }
+   </script>
+
+
+<script>
+	$(document).ready(function(){
+  	$('[ip-mask]').ipAddress();
+	});
+</script>
+
+
+<script>
+        function Complete()
+        {
+	$('form').on('submit', function(e){
+    	e.preventDefault();
+	});
+	const arr = document.getElementById('ipAddress').value;
+    	console.log(arr);
+	}
+</script>
+
+</body>

@@ -1,0 +1,17 @@
+{
+  "server": {
+    "http_port": ":8083",
+    "ice_servers": [
+      "stun:stun.l.google.com:19302"
+    ],
+    "ice_username": "",
+    "ice_credential": ""
+  },
+  "streams": {
+    "Empiria": {
+      "url": "rtsp://192.168.3.11:9099/stream",
+      "on_demand": true,
+      "ip": "192.168.3.11"
+    }
+  }
+}

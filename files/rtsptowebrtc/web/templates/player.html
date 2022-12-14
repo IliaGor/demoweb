@@ -1,0 +1,210 @@
+<html>
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport"-->
+<!--      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<head>
+
+
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <!--<link rel="stylesheet" href="../../static/css/bootstrap.min.css">-->
+    <!--    <link rel="stylesheet" href="../../static/css/bootstrap1.css">-->
+
+    <link rel="stylesheet" href="../../static/css/bootstrap.css">
+    <!--    <link rel="stylesheet" href="../../static/css/MyExample.css">-->
+    <script type="text/javascript" src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/adapter-latest.js"></script>
+
+    <style>
+        body{
+            /*background: #ffffff url(../../static/images/fon.png) no-repeat ;*/
+            background-color: #ffffff;
+        }
+        h2 {
+            font: normal normal 30px "roboto_ltregular" , arial , sans-serif;
+            /*color: #efa201;*/
+            color: #ffffff;
+            font-weight: normal;
+            text-align: center;
+            background-color: #335d86;
+            padding: .4em;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+
+<h2 align="left">
+    <!--        {{ . }}-->
+    Видеокамера "Эмпирия"
+    <!--            Просмотр потока с IP:192.168.3.11-->
+
+</h2>
+
+
+
+<div id="subHeader2" class="color_white">
+    <div class="limiter">
+        <div class="subTable">
+            <div class="subTableColumn">
+                <div class="subContainer">
+                    <div id="logo">
+                            <span>
+                                <img src="../../static/images/logo.png" alt="НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ И КОНСТРУКТОРСКИЙ ИНСТИТУТ РАДИОЭЛЕКТРОННОЙ ТЕХНИКИ" />
+                            </span>
+                    </div>
+
+                    <div class="nf">
+                        <!--                            " &#xFEFF;"-->
+                        <span class="headtso" >Комплексное обеспечение безопасности объектов</span>
+                        <span class="tso" >Системы охраны периметра</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--        <div class="container">-->
+<!--          <div class="row">-->
+<div class="col-3">
+    <div class="list-group" style="width: 200px">
+        {{ range .suuidMap }}
+        <!--                 <a href="{{ . }}" id="{{ . }}" name="{{ . }}" class="list-group-item list-group-item-action">{{ . }}</a>-->
+        <a href="{{ . }}" id="{{ . }}" name="{{ . }}" class="list-group-item list-group-item-action">IP:192.168.3.11</a>
+        {{ end }}
+    </div>
+</div>
+
+
+
+
+<div class="col" >
+    <input type="hidden" name="suuid" id="suuid" value="{{ .suuid }}">
+    <input type="hidden" name="port" id="port" value="{{ .port }}">
+    <input type="hidden" id="localSessionDescription" readonly="true">
+    <input type="hidden" id="remoteSessionDescription">
+    <div  class="video-window" id="remoteVideos" >
+        <video style="width:90%" id="videoElem" autoplay muted controls poster="../../static/images/optimize.jpeg">
+        </video>
+
+        <div class="btn_0-block">
+
+            <a class="btn_0" onclick="func_OpenNautilus()"           role="button" >+</a>
+            <br>
+            <a class="btn_0" onclick="SetFocus()"           role="button" >Настроить фокус</a>
+            <br>
+            <a class="btn_0" onclick="SetFocus()"           role="button" >-</a>
+            <br>
+
+
+            <a class="btn_0" onclick="OnSpotlight()"        role="button" >Включить прожектор</a>
+            <br>
+            <a class="btn_0" onclick="OffSpotlight()"       role="button" >Отключить прожектор</a>
+            <!--        <a class="btn_0" onclick="func_OpenNautilus()"  role="button" >Open Nautilus</a>-->
+            <br>
+            <a class="btn_0" onclick="Make_screenshot()"    role="button" >Сделать снимок</a>
+            <!--                            <a class="btn_0" href="../../static/images/optimize.jpeg" download>Загрузить скриншот</a>-->
+            <br>
+            <a class="btn_0" href="../../optimize1.jpeg" download>Загрузить скриншот</a>
+            <br>
+            <br>
+            <!--                            <form method="POST">-->
+            <form method="POST">
+
+
+                <input class="textarea1" name="NewIP" type="text"  placeholder = "192.168.0.0" cols="20" rows="1" required pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"	>
+
+                <br>
+                <input class="btn_0"  type="submit"  value="Отправить">
+                <br>
+                <input class="btn_0"  type="reset"  value="Очистить">
+            </form>
+
+
+        </div>
+
+
+
+    </div>
+    <br> <br> <br>
+    <!--        </div>-->
+    <!--    </div>-->
+</div>
+
+<script type="text/javascript" src="../../static/js/app.js?ver={{ .version }}"></script>
+
+
+
+
+
+
+<script>
+
+    function ResetFocus()
+    {
+        alert("Сброс фокуса");
+    }
+
+
+    function OnSpotlight(){ alert("Включить прожектор")}
+    function Make_screenshot(){ alert("Сделать снимок экрана")}
+    function OffSpotlight()
+    {
+        alert("Отключить прожектор")
+        //============= Отправить сообщение на сервер без перехода страницы ===========
+        let myRequestNautilus = new XMLHttpRequest();
+
+        myRequestNautilus.open('GET', ':uuid/OffSpotlightURL', true); //асинхронный запрос
+
+        myRequestNautilus.onreadystatechange = function() {
+            if (myRequestNautilus.readyState != 4) return;
+            if (myRequestNautilus.status != 200) {
+                // обработать ошибку
+                alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+                return;
+            }
+            // обработать результат
+        }
+        myRequestNautilus.send();
+//=============================================
+    }
+
+    function func_OpenNautilus() {
+        alert("Nautilus")
+//============= Отправить сообщение на сервер без перехода страницы ===========
+        let myRequestNautilus = new XMLHttpRequest();
+
+        myRequestNautilus.open('GET', ':uuid/OpenNautilus', true); //асинхронный запрос
+
+        myRequestNautilus.onreadystatechange = function() {
+            if (myRequestNautilus.readyState != 4) return;  //если  4 - запрос завершен
+            if (myRequestNautilus.status != 200) {
+                // обработать ошибку
+                alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+                return;
+            }
+            // обработать результат
+        }
+        myRequestNautilus.send();
+//=============================================
+        //   result = prompt('title', '123');
+        //   let result1 = confirm("Ты здесь ?");
+        //   alert(result1);
+    }
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+﻿<body>
+       <input class="sprava-box" id="right-box" type="checkbox" hidden>
+       <label class="btn-right" for="right-box"></label>
+	<div id="right-column">
+		<div id="rightLine1">
+			<div class="title-side-right title-up right">
+				<span>Фокус</span>
+			</div>
+			<div class="button_box">
+				<div class="button">
+					<a href="#" onclick="SetFocusDown()"><span id="btn-minus"></span></a>
+				</div>
+				<div class="button">
+					<a href="#" onclick="SetFocus()"><span id="btn-autofokus"></span></a>
+				</div>
+				<div class="button">
+					<a href="#" onclick="SetFocusUp()"><span id="btn-plus"></span></a>
+				</div>
+			</div>	
+
+		</div>
+		<div id="rightLine2">
+			<div class="subcolumnl">
+				<div class="title-subcolumn">
+					<span>Прожектор</span>
+				</div>
+				<div class="button">
+					<a href="#" onclick="OnSpotlight()"><span id="btn-light"></span></a>
+				</div>
+
+			</div>
+			<div class="subcolumnr">
+				<div class="title-subcolumn">
+					<span>Тревога</span>
+				</div>
+				<div class="button">
+					<a href="#" onclick="Alarm_off()"><span
+ id="btn-alarm"></span></a>
+				</div>
+
+			</div>
+		</div>
+		<div id="rightLine3">
+			<div class="button_box">
+				<div class="button">
+					<a href="#" onclick="SetZoomDown()"><span
+ id="btn-minus"></span></a>
+				</div>
+				<div class="button">
+					<a href="#" onclick="SetZoom()"><span
+ id="btn-autozoom"></span></a>
+				</div>
+				<div class="button">
+					<a href="#" onclick="SetZoomUp()"><span
+ id="btn-plus"></span></a>
+				</div>
+			</div>	
+			<div class="title-side-right title-down right">
+				<span>Zoom</span>
+			</div>
+		</div>
+	</div>
+
+
+	   <script>
+//=============================================
+		   function SetFocus(){
+			   //alert("Настроить фокус")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/SetFocusURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		}
+
+//=============================================
+		   function SetFocusUp(){
+			   //alert("Настроить фокус")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/SetFocusUpURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		}
+
+//=============================================
+		   function SetFocusDown(){
+			   //alert("Настроить фокус")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/SetFocusDownURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		}
+
+//=============================================
+		   function SetZoom(){
+			   //alert("Настроить фокус")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/SetZoomURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+
+
+		   }
+
+//=============================================
+		   function SetZoomDown(){
+			   //alert("Настроить фокус")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/SetZoomDownURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+
+
+		   }
+
+
+//=============================================
+		   function SetZoomUp(){
+			   //alert("Настроить фокус")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/SetZoomUpURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+
+
+		   }
+		   //function ResetFocus(){ alert("Сброс фокуса")}
+		   function OnSpotlight(){
+
+			   //alert("Включить прожектор")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/OnSpotlightURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+
+		   }
+
+
+		   function Zoom_in(){
+			  // alert("Zoom приблизить")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/ZoomInURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		   }
+
+		   function Zoom_out(){
+			   //alert("Zoom отдалить")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/ZoomOutURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		   }
+
+		   function OffSpotlight()
+		   {
+			   //alert("Отключить прожектор")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/OffSpotlightURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		   }
+
+		   function Alarm_off()
+		   {
+			   //alert("Сброс тревоги")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/AlarmoffURL', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+//=============================================
+		   }
+
+		   function func_OpenNautilus() {
+			   //alert("Nautilus")
+			   let myRequestNautilus = new XMLHttpRequest();
+			   myRequestNautilus.open('GET', ':uuid/OpenNautilus', true); //асинхронный запрос
+			   myRequestNautilus.onreadystatechange = function() {
+				   if (myRequestNautilus.readyState != 4) return;  //если  4 - запрос завершен
+				   if (myRequestNautilus.status != 200) {
+					   // обработать ошибку
+					   alert('Ошибка ' + myRequestNautilus.status + ': ' + myRequestNautilus.statusText);
+					   return;
+				   }
+			   }
+			   myRequestNautilus.send();
+		   }
+
+	   </script>
+
+</body>

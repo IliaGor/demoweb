@@ -1,0 +1,11 @@
+[Unit]
+Description=demoserver Golang GIN
+
+[Service]
+Type=simple
+ExecStart=sh /usr/bin/demowebserver.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
